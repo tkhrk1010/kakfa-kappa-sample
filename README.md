@@ -4,6 +4,7 @@
 ### run
 ```
 $ docker-compose up -d
+$ make run_sample
 ```
 
 ### produce message
