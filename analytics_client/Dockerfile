@@ -5,4 +5,4 @@ WORKDIR /app
 COPY Gemfile .
 RUN bundle install
 
-COPY consumer.rb .
+COPY analytics_client.rb .

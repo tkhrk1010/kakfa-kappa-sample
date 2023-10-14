@@ -21,7 +21,7 @@ services:
   postgres:
     build:
       context: db
-      dockerfile: Dockerfile.postgres
+      dockerfile: Dockerfile
     environment:
       POSTGRES_DB: kafka_db
       POSTGRES_USER: admin
@@ -39,10 +39,10 @@ services:
     ports:
       - "8080:8080"
 
-  ruby-producer:
+  event-producer:
     build:
-      context: producer
-      dockerfile: Dockerfile.producer
+      context: event_producer
+      dockerfile: Dockerfile
     depends_on:
       - kafka
     stdin_open: true
@@ -50,13 +50,30 @@ services:
     tty: true
 
 
-  ruby-consumer:
+  long-term-store:
     build:
-      context: consumer
-      dockerfile: Dockerfile.consumer
+      context: long_term_store
+      dockerfile: Dockerfile
     depends_on:
       - kafka
       - postgres
+    tty: true
+
+  speed-layer:
+    build:
+      context: speed_layer
+      dockerfile: Dockerfile
+    depends_on:
+      - kafka
+      - postgres
+    tty: true
+
+  analytics-client:
+    build:
+      context: analytics_client
+      dockerfile: Dockerfile
+    depends_on:
+      - kafka
     tty: true
 
 volumes:
