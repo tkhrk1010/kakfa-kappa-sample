@@ -31,3 +31,6 @@ from
 	left join game_cancel_after_use gcau on gcau.game_application_id = ga.id
 ;
 ```
+
+## note
+next action: use eventをconsumeしたときに、債権を作成するeventを発火する。
