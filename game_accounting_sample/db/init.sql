@@ -30,6 +30,14 @@ CREATE TABLE IF NOT EXISTS game_cancel_after_use (
     updated_at TIMESTAMP NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS credits (
+    id UUID PRIMARY KEY,
+    game_application_id UUID NOT NULL,
+    incurred_at TIMESTAMP NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP NOT NULL
+);
+
 -- game_application table dummy data
 DO $$
 BEGIN

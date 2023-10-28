@@ -14,4 +14,11 @@ done
 
 echo "$TIMESTAMP Kafka is ready."
 
-ruby app.rb
+# Start game.rb in the background
+ruby game_event_handler.rb &
+
+# Start credit.rb in the background
+ruby credit_event_handler.rb &
+
+# Keep the script running
+wait
