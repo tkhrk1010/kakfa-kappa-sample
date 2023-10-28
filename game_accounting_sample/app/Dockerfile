@@ -1,7 +1,10 @@
 FROM ruby:2.7
 
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev
+
+# for waiting kafka startup
 RUN apt-get update && apt-get install -y netcat
+
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

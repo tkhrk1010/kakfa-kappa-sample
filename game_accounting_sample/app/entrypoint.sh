@@ -1,6 +1,6 @@
 #!/bin/bash
 
-KAFKA_HOST="service_accounting_sample-kafka-1"
+KAFKA_HOST="game_accounting_sample-kafka-1"
 KAFKA_PORT=9092
 
 # timestamp
@@ -14,4 +14,4 @@ done
 
 echo "$TIMESTAMP Kafka is ready."
 
-ruby app/app.rb
+ruby app.rb

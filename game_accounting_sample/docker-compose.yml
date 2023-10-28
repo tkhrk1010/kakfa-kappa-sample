@@ -30,16 +30,17 @@ services:
       context: db
       dockerfile: Dockerfile
     environment:
-      POSTGRES_DB: service_db
-      POSTGRES_USER: postgres_service_user
-      POSTGRES_PASSWORD: password
+      POSTGRES_DB: game_db
+      POSTGRES_USER: db_user
+      POSTGRES_PASSWORD: db_password
     volumes:
-      - service_db_postgres-data:/var/lib/postgresql/data
+      - game-db-data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-init.d/init.sql
     ports:
       # hostの5433とcontainerの5432をつなげる
       - "5433:5432"
 
-  ruby_app:
+  game_app:
     build:
       context: app
       dockerfile: Dockerfile
@@ -50,4 +51,4 @@ services:
       - postgres
 
 volumes:
-  service_db_postgres-data:
+  game-db-data:
